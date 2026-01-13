@@ -12,7 +12,7 @@ part of 'random_user_service.dart';
 
 class _RandomUserClient implements RandomUserClient {
   _RandomUserClient(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'http://127.0.0.1:5000/api/';
+    baseUrl ??= 'http://127.0.0.1:5000';
   }
 
   final Dio _dio;
@@ -31,7 +31,7 @@ class _RandomUserClient implements RandomUserClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'users',
+            '/users',
             queryParameters: queryParameters,
             data: _data,
           )

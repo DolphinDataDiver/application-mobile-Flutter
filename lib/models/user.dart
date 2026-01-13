@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';
-
 @JsonSerializable()
 class User {
+  final String id;                     // added
+  final String createdAt;              // added (or DateTime with converter)
   final Profile profile;
   final String username;
   final String department;
@@ -11,9 +12,11 @@ class User {
   final List<String> knownIps;
   final String lastLoginAttempt;
   final String lastLoginIp;
-  final Map<String, dynamic> staticData;
+  final List<int> staticData;         // changed to List<int>
 
   User({
+    required this.id,
+    required this.createdAt,
     required this.profile,
     required this.username,
     required this.department,
@@ -25,9 +28,9 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-
   Map<String, dynamic> toJson() => _$UserToJson(this);
 }
+
 
 @JsonSerializable()
 class Profile {
